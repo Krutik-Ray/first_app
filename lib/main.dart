@@ -10,17 +10,25 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  var questionsList = ['What is your name?', 'What is your favourite color?'];
   var questionIndex = 0;
+
   void answerResponse() {
     setState(() {
-      questionIndex++;
+      questionIndex = questionIndex + 1;
     });
     print(questionIndex);
     print("Answer Selected from function! ");
   }
 
   Widget build(BuildContext context) {
+    var questionsList = [
+      'What is your name?',
+      'What is your favourite color?',
+      'What is your area of interest',
+      'a',
+      'b',
+      'c'
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -28,16 +36,14 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(questionsList[1]),
+            Text(questionsList[questionIndex]),
             RaisedButton(
               child: Text('Answer 1.'),
               color: Colors.amber,
-              onPressed: () {
-                print("Answer Selected! ");
-              },
+              onPressed: (answerResponse),
             ),
             RaisedButton(
-              child: Text('Answer 1.'),
+              child: Text('Answer 2.'),
               onPressed: (answerResponse),
               color: Colors.blueAccent,
               onLongPress: () {
