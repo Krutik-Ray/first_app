@@ -41,11 +41,14 @@ class _MyAppState extends State<MyApp> {
               questionsList[_questionIndex],
             ),
             RaisedButton(
+              padding: EdgeInsets.all(15),
               child: Text('Answer 1.'),
               color: Colors.amber,
               onPressed: (_answerResponse),
             ),
+            Padding(padding: EdgeInsets.all(10)),
             RaisedButton(
+              padding: EdgeInsets.all(15),
               child: Text('Answer 2.'),
               onPressed: (_answerResponse),
               color: Colors.blueAccent,
