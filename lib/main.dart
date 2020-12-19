@@ -5,18 +5,18 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
-  void answerResponse() {
+  void _answerResponse() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
-    print(questionIndex);
+    print(_questionIndex);
     print("Answer Selected from function! ");
   }
 
@@ -36,15 +36,15 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(questionsList[questionIndex]),
+            Text(questionsList[_questionIndex]),
             RaisedButton(
               child: Text('Answer 1.'),
               color: Colors.amber,
-              onPressed: (answerResponse),
+              onPressed: (_answerResponse),
             ),
             RaisedButton(
               child: Text('Answer 2.'),
-              onPressed: (answerResponse),
+              onPressed: (_answerResponse),
               color: Colors.blueAccent,
               onLongPress: () {
                 print("You just crushed that button ! ");
