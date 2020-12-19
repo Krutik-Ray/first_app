@@ -2,9 +2,21 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
   var questionsList = ['What is your name?', 'What is your favourite color?'];
+  var questionIndex = 0;
   void answerResponse() {
+    setState(() {
+      questionIndex++;
+    });
+    print(questionIndex);
     print("Answer Selected from function! ");
   }
 
