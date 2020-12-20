@@ -1,3 +1,4 @@
+import 'package:first_app/answer.dart';
 import 'package:flutter/material.dart';
 import './question.dart';
 
@@ -40,22 +41,10 @@ class _MyAppState extends State<MyApp> {
             Question(
               questionsList[_questionIndex],
             ),
-            RaisedButton(
-              padding: EdgeInsets.all(15),
-              child: Text('Answer 1.'),
-              color: Colors.amber,
-              onPressed: (_answerResponse),
-            ),
-            Padding(padding: EdgeInsets.all(10)),
-            RaisedButton(
-              padding: EdgeInsets.all(15),
-              child: Text('Answer 2.'),
-              onPressed: (_answerResponse),
-              color: Colors.blueAccent,
-              onLongPress: () {
-                print("You just crushed that button ! ");
-              },
-            ),
+            Answer(_answerResponse),
+            Answer(_answerResponse),
+            Answer(_answerResponse),
+            // Padding(padding: EdgeInsets.all(10)),
           ],
         ),
       ),
