@@ -1,6 +1,6 @@
-import 'package:first_app/answer.dart';
 import 'package:flutter/material.dart';
-import './question.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
-  final questionsList = [
+  final _questionsList = [
     //final: runtime constant, const: compile and runtime constant.
     {
       //we can also declare values as constant, in that case, we can
@@ -33,13 +33,15 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void _answerResponse() {
-    if (_questionIndex < questionsList.length) {
-      print('We have more questions.');
-    }
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+    if (_questionIndex < _questionsList.length) {
+      print('We have more questions.');
+    } else {
+      print('No more questions...');
+    }
     print("Answer Selected from function! ");
   }
 
@@ -49,22 +51,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("Simple Quiz"),
         ),
-        body: _questionIndex < questionsList.length
-            ? Column(
-                children: [
-                  Question(
-                    questionsList[_questionIndex]['questionText'],
-                  ),
-                  ...(questionsList[_questionIndex]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(_answerResponse, answer);
-                  }).toList()
-                  // Padding(padding: EdgeInsets.all(10)),
-                ],
-              )
-            : Center(
-                child: Text('You did it.'),
-              ),
+        body: _questionIndex < _questionsList.length
+            ? Quiz(
+                answerResponse: _answerResponse,
+                questionsList: _questionsList,
+                questionIndex: _questionIndex)
+            : Result(),
       ),
     );
   }
