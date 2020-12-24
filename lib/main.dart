@@ -12,36 +12,55 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _questionIndex = 0;
-
   final _questionsList = [
     //final: runtime constant, const: compile and runtime constant.
     {
       //we can also declare values as constant, in that case, we can
       'questionText':
           'What is your favourite color?', //overwrite the variable, but not the values in it.
-      'answers': ['Black', 'Red', 'Green', 'White'],
+      'answers': [
+        {'text': 'Black', 'score': 20},
+        {'text': 'Red', 'score': 10},
+        {'text': 'Green', 'score': 10},
+        {'text': 'White', 'score': 5}
+      ],
     },
     {
       'questionText': 'What  is your favourite animal?',
-      'answers': ['Rabbit', 'Snake', 'Elephant', 'Dog'],
+      'answers': [
+        {'text': 'Rabbit', 'score': 3},
+        {'text': 'Snake', 'score': 11},
+        {'text': 'Elephant', 'score': 5},
+        {'text': 'Dog', 'score': 9}
+      ],
     },
     {
       'questionText': 'What is your favourite flower?',
-      'answers': ['Lily', 'Rose', 'Tulip', 'Lotus'],
+      'answers': [
+        {'text': 'Rose', 'score': 15},
+        {'text': 'Tulip', 'score': 7},
+        {'text': 'Lotus', 'score': 8},
+        {'text': 'Lily', 'score': 9}
+      ],
     },
   ];
+  var _questionIndex = 0;
+  int _totalScore = 0;
 
-  void _answerResponse() {
+  void _answerResponse(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+
     if (_questionIndex < _questionsList.length) {
       print('We have more questions.');
     } else {
       print('No more questions...');
     }
+
     print("Answer Selected from function! ");
   }
 
