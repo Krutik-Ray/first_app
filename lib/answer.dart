@@ -10,8 +10,9 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      padding: EdgeInsets.all(6),
       child: RaisedButton(
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(18),
         textColor: Colors.white,
         child: Text(answerText),
         color: Colors.blueAccent,

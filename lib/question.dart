@@ -10,6 +10,7 @@ class Question extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
+        padding: EdgeInsets.only(top: 30, bottom: 30),
         // height: double.maxFinite,
         margin: EdgeInsets.all(12),
         // padding: EdgeInsets.all(0),
